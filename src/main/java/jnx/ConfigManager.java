@@ -53,11 +53,9 @@ final public class ConfigManager {
     // locate all parent fields that
     // implement ControlInterface
     private void create_control_map() {
-        map = new ConcurrentSkipListMap<String, ControlInterface>();
+        map = new ConcurrentSkipListMap<>();
         String name;
-        Iterator<Field> fi = Arrays.asList(parent.getClass().getDeclaredFields()).iterator();
-        while (fi.hasNext()) {
-            Field f = fi.next();
+        for (Field f : parent.getClass().getDeclaredFields()) {
             name = f.getName();
             try {
                 Object obj = f.get(parent);
@@ -93,15 +91,13 @@ final public class ConfigManager {
     public void write_config_file() {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(init_path));
-            Iterator<String> is = map.keySet().iterator();
-            while (is.hasNext()) {
-                String key = is.next();
+            for (String key : map.keySet()) {
                 String val = map.get(key).toString();
                 bw.write(key + " = " + val + line_sep);
             }
             bw.close();
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace(System.out);
         }
     }
 }

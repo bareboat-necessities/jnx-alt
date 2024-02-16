@@ -35,12 +35,7 @@ final public class ToggleButtonController implements ControlInterface {
         box = b;
         box.setSelected(v);
         value = v;
-        box.addItemListener(new java.awt.event.ItemListener() {
-
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                item_state_changed();
-            }
-        });
+        box.addItemListener(evt -> item_state_changed());
     }
 
     private void item_state_changed() {

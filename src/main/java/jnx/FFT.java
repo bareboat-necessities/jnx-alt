@@ -77,7 +77,7 @@ final public class FFT {
                         in_data[i] = tc;
                         out_data[rb] = tc;
                     }
-                    fftPrecalc = new ArrayList<FFTPrecalc>();
+                    fftPrecalc = new ArrayList<>();
                     
                     int imax = 1;
                     while(imax < size) {
@@ -123,12 +123,10 @@ final public class FFT {
             double wtemp, wr, wpr, wpi, wi, theta;
             Complex ac, bc;
             Complex tc = new Complex();
-            FFTPrecalc t;
-            Iterator<FFTPrecalc> it = fftPrecalc.iterator();
             // Danielson-Lanzcos method
             // with some precomputation
-            while (it.hasNext()) {
-                tcalc = it.next();
+            for (FFTPrecalc precalc : fftPrecalc) {
+                tcalc = precalc;
                 imax = tcalc.imax;
                 istep = tcalc.istep;
                 wpr = tcalc.wpr;

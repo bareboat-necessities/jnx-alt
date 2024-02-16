@@ -60,8 +60,8 @@ final public class HelpPane extends javax.swing.JPanel {
         parent = p;
         initComponents();
         doc = helpTextPane.getDocument();
-        undoStack = new Stack<Integer>();
-        redoStack = new Stack<Integer>();
+        undoStack = new Stack<>();
+        redoStack = new Stack<>();
         highlighter = helpTextPane.getHighlighter();
         highlightPainter = new DefaultHighlighter.DefaultHighlightPainter(new Color(200, 255, 200));
         setupHelp();
@@ -71,12 +71,7 @@ final public class HelpPane extends javax.swing.JPanel {
 
     void setFocus() {
         SwingUtilities.invokeLater(
-                new Runnable() {
-
-                    public void run() {
-                        findTextField.requestFocus();
-                    }
-                });
+                () -> findTextField.requestFocus());
     }
 
     // help resource related
@@ -289,11 +284,7 @@ final public class HelpPane extends javax.swing.JPanel {
         helpTextPane.setContentType("text/html");
         helpTextPane.setEditable(false);
         helpTextPane.setFocusable(false);
-        helpTextPane.addHyperlinkListener(new javax.swing.event.HyperlinkListener() {
-            public void hyperlinkUpdate(javax.swing.event.HyperlinkEvent evt) {
-                helpTextPaneHyperlinkUpdate(evt);
-            }
-        });
+        helpTextPane.addHyperlinkListener(evt -> helpTextPaneHyperlinkUpdate(evt));
         helpScrollPane.setViewportView(helpTextPane);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

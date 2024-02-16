@@ -58,11 +58,11 @@ private char[][] figs = {
 
 
     public CCIR476() {
-        code_figs = new HashMap<Integer, Integer>();
-        code_ltrs = new HashMap<Integer, Integer>();
-        ltrs_code = new HashMap<Integer, Integer>();
-        figs_code = new HashMap<Integer, Integer>();
-        valid_codes = new HashSet<Integer>();
+        code_figs = new HashMap<>();
+        code_ltrs = new HashMap<>();
+        ltrs_code = new HashMap<>();
+        figs_code = new HashMap<>();
+        valid_codes = new HashSet<>();
         shift = false;
         int x, y;
         for (int code = 0; code < 128; code++) {

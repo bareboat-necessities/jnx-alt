@@ -56,12 +56,7 @@ final public class TextFieldController implements ControlInterface {
                 input_changed();
             }
         });
-        field.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                mouse_wheel_event(evt);
-            }
-        });
+        field.addMouseWheelListener(evt -> mouse_wheel_event(evt));
     }
 
     private void mouse_wheel_event(java.awt.event.MouseWheelEvent evt) {

@@ -46,22 +46,12 @@ final public class ComboBoxController implements ControlInterface {
 
     private void setup(JComboBox b, java.util.List<String> data, String sel, java.util.List<String> tips, String prompt) {
         box = b;
-        tooltips = new java.util.ArrayList<String>();
+        tooltips = new java.util.ArrayList<>();
         this.prompt = prompt;
         populate_combobox(data, sel, tips);
         box.setRenderer(new ToolTipComboBoxRenderer());
-        box.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                mouse_wheel_event(evt);
-            }
-        });
-        box.addItemListener(new java.awt.event.ItemListener() {
-
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                item_state_changed(evt);
-            }
-        });
+        box.addMouseWheelListener(evt -> mouse_wheel_event(evt));
+        box.addItemListener(evt -> item_state_changed(evt));
         set_box_tooltip();
     }
 
@@ -188,5 +178,5 @@ final public class ComboBoxController implements ControlInterface {
             setText((value == null) ? "" : value.toString());
             return this;
         }
-    };
+    }
 }

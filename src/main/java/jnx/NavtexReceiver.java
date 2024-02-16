@@ -154,7 +154,7 @@ final public class NavtexReceiver extends Thread {
         start_valid_regex = Pattern.compile("ZCZC \\w\\w\\d\\d\\r");
         stop_valid = "\r\nNNNN\r\n";
         state = State.NOSIGNAL;
-        sync_chars = new ArrayList<Integer>();
+        sync_chars = new ArrayList<>();
         reception_queue = new StringBuffer();
         ccir476 = new CCIR476();
         create_mixer_lists();
@@ -174,8 +174,8 @@ final public class NavtexReceiver extends Thread {
         targetLineInfo = new Line.Info(TargetDataLine.class);
         sourceLineInfo = new Line.Info(SourceDataLine.class);
         Mixer.Info[] mi_list = AudioSystem.getMixerInfo();
-        source_mixer_list = new java.util.ArrayList<Mixer.Info>();
-        target_mixer_list = new java.util.ArrayList<Mixer.Info>();
+        source_mixer_list = new java.util.ArrayList<>();
+        target_mixer_list = new java.util.ArrayList<>();
         for (Mixer.Info mi : mi_list) {
             Mixer mixer = AudioSystem.getMixer(mi);
             if (mixer.isLineSupported(targetLineInfo)) {

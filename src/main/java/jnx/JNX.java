@@ -122,13 +122,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
         spectrum_manager = new SpectrumDisplayManager(this, spectrum_scope_pane);
         setup_control_values();
         receiver.control(true);
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-
-            @Override
-            public void run() {
-                inner_close();
-            }
-        });
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> inner_close()));
         periodic_timer = new java.util.Timer();
         periodic_timer.scheduleAtFixedRate(new PeriodicEvents(), 500, timer_period_ms);
     }
@@ -267,7 +261,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
     }
 
     private List<String> make_numeric_list(int a, int b, int step) {
-        List<String> data = new ArrayList<String>();
+        List<String> data = new ArrayList<>();
         for (int i = a; i != b; i += step) {
             data.add(Integer.toString(i));
         }
@@ -275,7 +269,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
     }
 
     private List<String> make_mixer_description_list(List<Mixer.Info> data, String extra) {
-        List<String> out = new ArrayList<String>();
+        List<String> out = new ArrayList<>();
         if (extra != null) {
             out.add(extra);
         }
@@ -820,12 +814,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
             FlatLightLaf.setup();
             FlatNordIJTheme.setup();
             //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            java.awt.EventQueue.invokeLater(new Runnable() {
-
-                public void run() {
-                    new JNX(args).setVisible(true);
-                }
-            });
+            java.awt.EventQueue.invokeLater(() -> new JNX(args).setVisible(true));
         } catch (Exception e) {
             System.out.println("JNX main: " + e);
             e.printStackTrace();

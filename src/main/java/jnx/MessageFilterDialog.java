@@ -50,7 +50,7 @@ public class MessageFilterDialog extends javax.swing.JDialog {
         parent = p;
         initComponents();
         setTitle("Select which Navtex messages to accept");
-        button_list = new HashMap<String,JCheckBox>();
+        button_list = new HashMap<>();
         int i = 0;
         int col_len = 10;
         while (i + col_len < nav_msgs.length) {
@@ -78,7 +78,7 @@ public class MessageFilterDialog extends javax.swing.JDialog {
 
     private void close() {
         String selected = "";
-        java.util.List<String> keys = new ArrayList<String>(button_list.keySet());
+        java.util.List<String> keys = new ArrayList<>(button_list.keySet());
         Collections.sort(keys);
         for (String s : keys) {
             if (button_list.get(s).isSelected()) {

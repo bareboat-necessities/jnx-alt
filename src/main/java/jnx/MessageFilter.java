@@ -22,7 +22,7 @@ public class MessageFilter implements ControlInterface {
     }
 
     public boolean accept(String s) {
-        return value.indexOf(s) != -1;
+        return value.contains(s);
     }
 
     public String get_value() {
