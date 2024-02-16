@@ -20,10 +20,12 @@
 package jnx;
 
 import javax.sound.sampled.*;
-import java.nio.*;
-import java.util.*;
-import java.util.regex.*;
 import java.awt.*;
+import java.nio.ByteBuffer;
+import java.nio.ShortBuffer;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *

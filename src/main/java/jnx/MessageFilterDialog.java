@@ -11,8 +11,9 @@
 package jnx;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  *

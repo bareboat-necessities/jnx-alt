@@ -20,9 +20,8 @@
 package jnx;
 
 import javax.swing.*;
-import java.util.*;
-import java.awt.*;
 import javax.swing.plaf.basic.BasicComboBoxRenderer;
+import java.awt.*;
 
 /**
  *

@@ -26,15 +26,18 @@
 package jnx;
 
 import javax.swing.*;
-import java.net.*;
-import javax.swing.event.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Document;
+import javax.swing.text.Highlighter;
+import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.text.*;
-import javax.swing.text.html.*;
-import javax.swing.text.html.HTMLDocument.*;
-import java.util.*;
-import java.io.*;
+import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Stack;
 
 /**
  *

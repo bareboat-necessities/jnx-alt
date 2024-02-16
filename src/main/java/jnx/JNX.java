@@ -28,16 +28,20 @@ package jnx;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
 
-import java.util.*;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.io.*;
-//import java.text.*;
-import java.net.*;
+import javax.sound.sampled.Mixer;
 import javax.swing.*;
-import javax.sound.sampled.*;
-import java.awt.datatransfer.*;
-import java.awt.Toolkit;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.net.URL;
+import java.util.List;
+import java.util.Timer;
+import java.util.*;
 
 /**
  *
@@ -811,7 +815,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
     /**
      * @param args the command line arguments
      */
-    public static void main(final String args[]) {
+    public static void main(final String[] args) {
         try {
             FlatLightLaf.setup();
             FlatNordIJTheme.setup();

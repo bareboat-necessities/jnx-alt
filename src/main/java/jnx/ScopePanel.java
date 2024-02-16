@@ -25,12 +25,12 @@
  */
 package jnx;
 
-import java.awt.*;
-import java.awt.image.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.*;
-import java.io.*;
-import javax.imageio.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 /**
  *
