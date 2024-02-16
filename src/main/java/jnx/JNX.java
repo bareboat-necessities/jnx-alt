@@ -25,6 +25,9 @@
  */
 package jnx;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.FlatNordIJTheme;
+
 import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -73,7 +76,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
     boolean scope_visible = false;
 
     /** Creates new form JNX */
-    public JNX(String args[]) {
+    public JNX(String[] args) {
         initComponents();
         if (args.length > 0 && args[0].equals("-d")) {
             debug = true;
@@ -810,7 +813,9 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
      */
     public static void main(final String args[]) {
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            FlatLightLaf.setup();
+            FlatNordIJTheme.setup();
+            //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             java.awt.EventQueue.invokeLater(new Runnable() {
 
                 public void run() {
