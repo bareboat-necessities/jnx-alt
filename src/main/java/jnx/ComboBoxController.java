@@ -50,8 +50,8 @@ final public class ComboBoxController implements ControlInterface {
         this.prompt = prompt;
         populate_combobox(data, sel, tips);
         box.setRenderer(new ToolTipComboBoxRenderer());
-        box.addMouseWheelListener(evt -> mouse_wheel_event(evt));
-        box.addItemListener(evt -> item_state_changed(evt));
+        box.addMouseWheelListener(this::mouse_wheel_event);
+        box.addItemListener(this::item_state_changed);
         set_box_tooltip();
     }
 
@@ -95,7 +95,7 @@ final public class ComboBoxController implements ControlInterface {
         try {
             String s = (String) box.getSelectedItem();
             value = Integer.parseInt(s);
-            dvalue = (double) value;
+            dvalue = value;
             pct_value = dvalue / 100.0;
             //System.out.println("new value: " + value);
         } catch (Exception e) {
@@ -147,7 +147,7 @@ final public class ComboBoxController implements ControlInterface {
                 s = (String) box.getSelectedItem();
             }
             value = Integer.parseInt(s);
-            dvalue = (double) value;
+            dvalue = value;
             pct_value = dvalue / 100.0;
         } catch (Exception e) {
             System.out.println(e);

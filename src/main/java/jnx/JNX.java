@@ -122,7 +122,7 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
         spectrum_manager = new SpectrumDisplayManager(this, spectrum_scope_pane);
         setup_control_values();
         receiver.control(true);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> inner_close()));
+        Runtime.getRuntime().addShutdownHook(new Thread(this::inner_close));
         periodic_timer = new java.util.Timer();
         periodic_timer.scheduleAtFixedRate(new PeriodicEvents(), 500, timer_period_ms);
     }
@@ -298,14 +298,14 @@ final public class JNX extends javax.swing.JFrame implements ClipboardOwner {
     private void update_volume_display() {
         int max = 32;
         int v = (int) Math.sqrt(receiver.audio_average) / 4;
-        String s = " Volume: ";
+        StringBuilder s = new StringBuilder(" Volume: ");
         for (int i = 0; i < v && i < max; i++) {
-            s += "|";
+            s.append("|");
         }
         if (v >= max) {
-            s += "+";
+            s.append("+");
         }
-        volume_label.setText(s);
+        volume_label.setText(s.toString());
     }
 
     private void launch_message_filter_dialog() {

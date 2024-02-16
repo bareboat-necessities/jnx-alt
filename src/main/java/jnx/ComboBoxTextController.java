@@ -48,8 +48,8 @@ final public class ComboBoxTextController implements ControlInterface {
         this.prompt = prompt;
         populate_combobox(data, sel, tips);
         box.setRenderer(new ToolTipComboBoxRenderer());
-        box.addMouseWheelListener(evt -> mouse_wheel_event(evt));
-        box.addItemListener(evt -> item_state_changed(evt));
+        box.addMouseWheelListener(this::mouse_wheel_event);
+        box.addItemListener(this::item_state_changed);
         set_box_tooltip();
     }
 

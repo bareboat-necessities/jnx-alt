@@ -427,7 +427,7 @@ final public class NavtexReceiver extends Thread {
         }*/
         String qs = alpha_phase ? "alpha                                " : "rep";
         //System.out.println(String.format("%s|%s: count = %d, code = %x, ch = %c, shift = %s",qs, s, char_count, code, ch, shift ? "True" : "False"));
-        System.out.println(String.format("%s|%x:%c", qs, code, ch));
+        System.out.printf("%s|%x:%c%n", qs, code, ch);
         //alpha_channel = !alpha_channel;
     }
 
@@ -470,11 +470,8 @@ final public class NavtexReceiver extends Thread {
 
                 switch (chr) {
                     case code_rep:
-                        break;
                     case code_alpha:
-                        break;
                     case code_beta:
-                        break;
                     case code_char32:
                         break;
                     case code_ltrs:
@@ -514,7 +511,7 @@ final public class NavtexReceiver extends Thread {
     }
 
     private double max(double a, double b) {
-        return (a > b) ? a : b;
+        return Math.max(a, b);
     }
 
     private void process_data(short[] data) {

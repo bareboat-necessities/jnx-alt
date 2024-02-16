@@ -84,7 +84,7 @@ final public class HelpPane extends javax.swing.JPanel {
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
             is.close();
             String s = sb.toString();
@@ -203,7 +203,7 @@ final public class HelpPane extends javax.swing.JPanel {
                     // aim for the middle of the screen
                     int pos = r.y - helpScrollPane.getHeight() / 2;
                     // but don't try for the impossible
-                    pos = (pos < 0) ? 0 : pos;
+                    pos = Math.max(pos, 0);
                     helpScrollPane.getVerticalScrollBar().setValue(pos);
                     // now highlight the found text in our nonfocused text pane
                     oldHighlight = highlighter.addHighlight(p, p + slen, highlightPainter);
@@ -284,7 +284,7 @@ final public class HelpPane extends javax.swing.JPanel {
         helpTextPane.setContentType("text/html");
         helpTextPane.setEditable(false);
         helpTextPane.setFocusable(false);
-        helpTextPane.addHyperlinkListener(evt -> helpTextPaneHyperlinkUpdate(evt));
+        helpTextPane.addHyperlinkListener(this::helpTextPaneHyperlinkUpdate);
         helpScrollPane.setViewportView(helpTextPane);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

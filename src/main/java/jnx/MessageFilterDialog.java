@@ -77,15 +77,15 @@ public class MessageFilterDialog extends javax.swing.JDialog {
     }
 
     private void close() {
-        String selected = "";
+        StringBuilder selected = new StringBuilder();
         java.util.List<String> keys = new ArrayList<>(button_list.keySet());
         Collections.sort(keys);
         for (String s : keys) {
             if (button_list.get(s).isSelected()) {
-                selected += s;
+                selected.append(s);
             }
         }
-        parent.accepted_navtex_messages.set_value(selected);
+        parent.accepted_navtex_messages.set_value(selected.toString());
         setVisible(false);
     }
 

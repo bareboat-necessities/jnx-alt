@@ -56,7 +56,7 @@ final public class TextFieldController implements ControlInterface {
                 input_changed();
             }
         });
-        field.addMouseWheelListener(evt -> mouse_wheel_event(evt));
+        field.addMouseWheelListener(this::mouse_wheel_event);
     }
 
     private void mouse_wheel_event(java.awt.event.MouseWheelEvent evt) {
@@ -71,7 +71,7 @@ final public class TextFieldController implements ControlInterface {
         n = (evt.isControlDown()) ? n * 10 : n;
         n = (evt.isAltDown()) ? n * 10 : n;
         dvalue += n;
-        dvalue = (dvalue < 0.0) ? 0.0 : dvalue;
+        dvalue = Math.max(dvalue, 0.0);
         process_entry();
         input_changed();
         process_entry();
@@ -88,8 +88,8 @@ final public class TextFieldController implements ControlInterface {
             value = field.getText();
             dvalue = Double.parseDouble(value);
             set_error(dvalue);
-            dvalue = (dvalue < 0.0) ? 0.0 : dvalue;
-            dvalue = (dvalue > maxvalue)?maxvalue:dvalue;
+            dvalue = Math.max(dvalue, 0.0);
+            dvalue = Math.min(dvalue, maxvalue);
             // scaled value for percentages
             pct_dvalue = dvalue * .01;
             //process_entry();

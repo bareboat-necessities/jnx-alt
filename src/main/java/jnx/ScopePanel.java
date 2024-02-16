@@ -159,7 +159,7 @@ final public class ScopePanel extends JPanel {
     private void check_controls() {
         if (!spectrum_trace) {
             double v = this.horizontal_control.get_pct_dvalue() * 0.1;
-            v = (v < .01) ? .01 : v;
+            v = Math.max(v, .01);
             int ss = (int) (v * parent.receiver.sample_rate);
             if (ss != scope_size) {
                 hscale = v;
